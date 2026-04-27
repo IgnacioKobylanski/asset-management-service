@@ -1,78 +1,29 @@
-# asset-management-service
+# 📦 Asset Management API (ERP)
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Backend desarrollado con **Quarkus** para la gestión centralizada de activos. Este proyecto demuestra la implementación de estándares de industria en arquitecturas Java modernas, enfocado en la mantenibilidad y el desacoplamiento.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## 🚀 Tecnologías y Herramientas
+* **Java 21**
+* **Quarkus**: Framework Supersonic Subatomic Java.
+* **Hibernate Panache**: Capa de persistencia sobre JPA.
+* **MySQL**: Base de datos relacional.
+* **Jakarta Validation**: Reglas de integridad en la capa de entrada.
+* **DTO Pattern**: Desacoplamiento de la API y la persistencia.
+* **Swagger/OpenAPI**: Documentación interactiva.
 
-## Running the application in dev mode
+## 🛠️ Características Principales
+- **Arquitectura Limpia**: Separación estricta entre Entidades y DTOs.
+- **Auditoría Nativa**: Gestión automática de `createdAt` y `updatedAt` mediante ciclos de vida de JPA.
+- **Manejo Global de Excepciones**: Respuestas estandarizadas para errores 404 y 400 mediante ExceptionMappers.
+- **Validación Robusta**: Contratos de API con validaciones de campos obligatorios y valores positivos.
 
-You can run your application in dev mode that enables live coding using:
+## 🔧 Configuración y Ejecución
 
-```shell script
+### Requisitos
+- JDK 21+
+- Maven 3.9+
+- MySQL Server
+
+### Ejecución en modo Desarrollo
+```bash
 ./mvnw quarkus:dev
-```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
-```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/asset-management-service-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- JDBC Driver - MySQL ([guide](https://quarkus.io/guides/datasource)): Connect to the MySQL database via JDBC
-
-## Provided Code
-
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
-
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)

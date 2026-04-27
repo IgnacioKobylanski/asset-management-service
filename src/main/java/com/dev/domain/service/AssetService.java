@@ -64,6 +64,8 @@ public class AssetService {
         dto.category = entity.category;
         dto.value = entity.value;
         dto.description = entity.description;
+        dto.createdAt = entity.createdAt;
+        dto.updatedAt = entity.updatedAt;
         return dto;
     }
 

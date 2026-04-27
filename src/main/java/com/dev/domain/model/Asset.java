@@ -1,26 +1,34 @@
 package com.dev.domain.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 public class Asset extends PanacheEntity {
 
-    @NotBlank(message="El nombre no puede estar vacío")
     public String name;
-
-    public String description;
-
-    @NotNull
     public String category;
-
-    @NotNull
-    @Positive(message="El valor debe ser mayor a cero")
+    public String description;
     public BigDecimal value;
 
+    @Column(updatable = false)
+    public LocalDateTime createdAt;
 
+    public LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
